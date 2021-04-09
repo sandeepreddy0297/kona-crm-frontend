@@ -1,0 +1,23 @@
+
+.background{
+    background-color: #1B203A;
+    height: 100vh;
+    width: 100vw;
+    margin-top: 0%;
+    overflow: hidden;
+}
+
+.maintitle{
+    margin-top: 200px;
+    align-items: center;
+}
+
+.content{
+    margin-top: 100px;
+    text-align: center;
+}
+button{
+    color: #FFFFFF;
+    border-radius: 20px;
+    background-color:  #E9204F;
+}
