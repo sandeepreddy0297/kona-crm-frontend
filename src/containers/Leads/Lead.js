@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import "./le.css"
-function SpecificLead(props) {
+function Lead(props) {
     const AllLeads = useSelector(state => state.leads);
     //console.log(AllLeads)
-     console.log('specific lead props',props.data.lead )
+     console.log('specific lead props',props )
 
     return (
         <div className="text-white" style={{ backgroundColor: " #252C48", opacity: "1" }}>
@@ -18,7 +18,7 @@ function SpecificLead(props) {
                     </div>
 
                 </div>
-                <hr></hr>
+                <hr className="solid" />
                 <div className="row">
                     <div className="col-12">
                         <h1>lead stage</h1>
@@ -29,7 +29,7 @@ function SpecificLead(props) {
                 <div className=" row container">
                     <div className="row">
                         <div className="col-xs-12 ">
-                            <ul className="nav nav-tabs justify-content-center">
+                            <ul className="nav nav-tabs ">
                                 <li ><a className="nav-item nav-link active" data-toggle="tab" href="#home">Home</a></li>
                                 <li ><a className="nav-item nav-link " data-toggle="tab" href="#menu1">Menu 1</a></li>
                                 <li ><a className="nav-item nav-link " data-toggle="tab" href="#menu2">Menu 2</a></li>
@@ -66,7 +66,7 @@ function SpecificLead(props) {
     )
 }
 
-export default SpecificLead
+export default Lead
 
 {/* <nav>
                                 <div className="nav nav-tabs " >

@@ -10,6 +10,7 @@ function SideNav() {
                     <NavLink to="#">Settings</NavLink>
                     <NavLink to="#">Reports</NavLink>
                     <NavLink to="/leads">Leads</NavLink>
+                  
                 </div>
           
     )

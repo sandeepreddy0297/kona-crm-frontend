@@ -5,12 +5,13 @@ import Register from '../containers/Register/Register';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import Home from '../containers/Home/Home';
 import Dashboard from '../containers/Dashboard/Dashboard';
-import Leads from '../containers/Leads/Leads';
+import AllLeads from '../containers/Leads/AllLeads';
 import TopNav from '../containers/Dashboard/topnav';
 import SideNav from '../containers/Dashboard/sidenav';
 import Createlead from '../containers/Leads/createlead';
 import { useSelector } from "react-redux";
-import SpecificLead from '../containers/Leads/specificLead';
+import Lead from '../containers/Leads/Lead';
+import changePassword from '../containers/chnagepassword/changePassword';
 
 function App() {
   const islogin = useSelector(state => state.login)
@@ -37,9 +38,10 @@ function App() {
           <div className="col-10 px-0">
             <TopNav />
             <Route path="/dashboard" component={Dashboard} />
-            <Route path="/leads" component={Leads} />
+            <Route path="/leads" component={AllLeads} />
             <Route path="/createlead" component={Createlead} />
-            <Route path="/lead" component={SpecificLead} />
+            <Route path="/lead/:id" component={Lead} />
+            <Route path="/cahngepassword" component={changePassword} />
             
           </div>
         </div>

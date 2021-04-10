@@ -1,12 +1,7 @@
 import React, { useEffect } from 'react';
 import "./Dashboard.css";
-import { BrowserRouter, Link, Route } from "react-router-dom";
-import TopNav from './topnav';
-import SideNav from './sidenav';
-import { useSelector } from "react-redux";
-import Login from '../Login/Login';
-import Leads from '../Leads/Leads';
 
+import { useSelector } from "react-redux";
 
 
 function Dashboard(props) {

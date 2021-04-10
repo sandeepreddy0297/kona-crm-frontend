@@ -13,7 +13,7 @@ function Login() {
     const dispatch=useDispatch();
     const history=useHistory();
    const isLogin = useSelector(state =>state.login)
-    console.log(isLogin)
+   console.log()
     
     const captureData = (event) => {
         var name = event.target.name;
@@ -42,9 +42,11 @@ function Login() {
     useEffect(() => {
         if (isLogin.islogin) {
            history.push("/dashboard");
+         
         }
+          console.log("login status",isLogin.islogin)
         
-    }, [isLogin])
+    }, [isLogin.islogin])
 
     return (
         <div className="login">
