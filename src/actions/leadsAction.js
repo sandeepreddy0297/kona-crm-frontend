@@ -8,7 +8,8 @@ let token = sessionStorage.getItem("token")
 
 export const leadAction= (data)=> {
     return async function(dispatch){
-        console.log(token);
+        // console.log(token);
+        // console.log(header)
      let response = await axios.post(`${BASE_URL}createlead`,data,header)
      console.log("res", response)
              dispatch({
@@ -29,4 +30,14 @@ export const leadAction= (data)=> {
      }
  }
 
- 
+ export const getlead = (id) => {
+    return async function(dispatch){
+          //console.log(header);
+        let response = await axios.get(`${BASE_URL}lead/${id}`, header);
+        console.log("one lead information",response)
+        dispatch({
+            type:"LEAD",
+            payload:response
+        })
+    }
+}

@@ -8,17 +8,24 @@ const LeadReducer = (state = [], action) => {
         case "CREATE_LEAD":
             //   console.log("reducer state",state)
             //   console.log("reducer",action.payload)
-            var state=action.payload.data
+            var state = action.payload.data
             console.log(state)
             return state;
         case "ALL_LEADS":
-            if(action.payload.data){
+            if (action.payload.data) {
                 let state = action.payload.data;
                 return state
             } else {
                 return state
             }
-            
+        case "LEAD":
+            if (action.payload.data) {
+                let state = action.payload.data;
+                return state
+            } else {
+                return state
+            }
+
         default:
             return state;
     }

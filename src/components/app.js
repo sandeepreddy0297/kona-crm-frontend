@@ -57,3 +57,7 @@ function App() {
 
 }
 export default App;
+
+
+
+{/* <Route path="/lead/:id" component={Lead} /> */}

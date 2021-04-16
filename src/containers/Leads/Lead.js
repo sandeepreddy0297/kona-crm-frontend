@@ -1,21 +1,33 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { getlead } from '../../actions/leadsAction'
 import "./le.css"
 function Lead(props) {
-    const AllLeads = useSelector(state => state.leads);
-    //console.log(AllLeads)
-     console.log('specific lead props',props )
+    const dispatch = useDispatch()
+    const lead = useSelector(state => state.leads);
+    console.log(lead)
+    console.log("props",props)
+    console.log('specific lead props', props.location.pathname.split("/")[2])
+
+    useEffect(() => {
+        dispatch(getlead(props.location.pathname.split("/")[2]))
+    }, [])
 
     return (
         <div className="text-white" style={{ backgroundColor: " #252C48", opacity: "1" }}>
-
-
             <div className="container-fluid px-4 bordered">
-                <p>specific lead</p>
                 <div className="row">
-                    <div className="col-12">
-                        <p>lead specification</p>
+                    <div className="col-6 px-5">
+                        <h2>{lead.name}</h2>
+                        <p>email <span className="px-5">{lead.email}</span></p>
+                        <p>technology <span className="px-5">{lead.technology}</span></p>
                     </div>
+                    <div className="col-6 ">
+                        <p>phone <span className="px-5">{lead.phone}</span></p>
+                        <p>source <span className="px-5">{lead.source}</span></p>
+
+                    </div>
+
 
                 </div>
                 <hr className="solid" />

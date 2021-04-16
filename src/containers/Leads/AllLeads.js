@@ -27,7 +27,7 @@ function AllLeads(props) {
             let leads = AllLeads.map(lead => {
                 return <tr key={lead._id} onClick={() => {
                     setState((previousState) => ({ ...previousState, "lead": lead }));
-                    props.history.push(`/lead/${lead._id}`)
+                    props.history.push(`/lead/${lead._id}`)  
                 }} >
                     <td  >{lead.name} </td>
                     <td>{lead.phone}</td>
@@ -40,7 +40,7 @@ function AllLeads(props) {
         }
     }
 
-    console.log(state.lead);
+   // console.log(state.lead);
     return (
         <>
             <div className=" leads row">
@@ -78,3 +78,9 @@ function AllLeads(props) {
 }
 
 export default AllLeads;
+
+
+
+
+
+// props.history.push(`/lead/${lead._id}`)

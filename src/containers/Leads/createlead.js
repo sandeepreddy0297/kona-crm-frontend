@@ -29,8 +29,8 @@ function Createlead() {
     }
    // console.log(state)
 
-   const AllLeads = useSelector(state => state.leads);
-   console.log("use selcetor allLeads",AllLeads);
+  // const AllLeads = useSelector(state => state.leads);
+   //console.log("use selcetor allLeads",AllLeads);
     return (
         <div>
             <div>
