@@ -32,7 +32,7 @@ export const leadAction= (data)=> {
 
  export const getlead = (id) => {
     return async function(dispatch){
-          //console.log(header);
+        
         let response = await axios.get(`${BASE_URL}lead/${id}`, header);
         console.log("one lead information",response)
         dispatch({
@@ -41,3 +41,25 @@ export const leadAction= (data)=> {
         })
     }
 }
+
+export const editLead = (lead)=>{
+    return async function(dispatch){
+        let response = await axios.put(`${BASE_URL}editlead`, lead, header);
+            console.log(response);
+            dispatch({
+                type:"EDIT_LEAD",
+                payload:response
+            })
+    }
+}
+
+export const deleteLead = (id) =>{
+    return async function(dispatch){
+        let response= await axios.delete(`${BASE_URL}removelead/${id}`,header)
+        dispatch({
+            type:"DELETE_LEAD",
+            payload:response
+        })
+    }
+}
+

@@ -1,24 +1,44 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getlead } from '../../actions/leadsAction'
-import "./le.css"
+import { deleteLead, getlead } from '../../actions/leadsAction';
+
+import "./le.css";
+
 function Lead(props) {
     const dispatch = useDispatch()
     const lead = useSelector(state => state.leads);
+    const id = props.location.pathname.split("/")[2]
     console.log(lead)
     console.log("props",props)
     console.log('specific lead props', props.location.pathname.split("/")[2])
 
     useEffect(() => {
-        dispatch(getlead(props.location.pathname.split("/")[2]))
+        dispatch(getlead(id))
     }, [])
+
+    const DeleteLead = (event) => {
+       // event.preventDefault();
+        dispatch(deleteLead(id));
+        if(lead){
+            props.history.push("/leads")
+        }
+    }
+
+    // const EditLead=()=>{
+    //     props.history.push(`/editlead/${id}`)
+    // }
+
 
     return (
         <div className="text-white" style={{ backgroundColor: " #252C48", opacity: "1" }}>
             <div className="container-fluid px-4 bordered">
+            <h2 className="px-4">{lead.name}</h2>
+            
+            <button>Edit</button>
+            <button onClick={DeleteLead}>Delete</button>
                 <div className="row">
                     <div className="col-6 px-5">
-                        <h2>{lead.name}</h2>
+                        
                         <p>email <span className="px-5">{lead.email}</span></p>
                         <p>technology <span className="px-5">{lead.technology}</span></p>
                     </div>

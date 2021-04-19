@@ -12,6 +12,7 @@ import Createlead from '../containers/Leads/createlead';
 import { useSelector } from "react-redux";
 import Lead from '../containers/Leads/Lead';
 import changePassword from '../containers/chnagepassword/changePassword';
+import EditLead from '../containers/Leads/EditLead';
 
 function App() {
   const islogin = useSelector(state => state.login)
@@ -42,6 +43,7 @@ function App() {
             <Route path="/createlead" component={Createlead} />
             <Route path="/lead/:id" component={Lead} />
             <Route path="/cahngepassword" component={changePassword} />
+            
             
           </div>
         </div>

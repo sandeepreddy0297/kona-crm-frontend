@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { getallLeads } from '../../actions/leadsAction'
+import {  getallLeads } from '../../actions/leadsAction'
 import "./leads.css"
 
 
@@ -22,6 +22,8 @@ function AllLeads(props) {
         dispatch(getallLeads(header));
     }, [])
 
+    
+
     const getAllLeads = () => {
         if (AllLeads.length > 0) {
             let leads = AllLeads.map(lead => {
@@ -34,6 +36,7 @@ function AllLeads(props) {
                     <td>{lead.email}</td>
                     <td>{lead.technology}</td>
                     <td>{lead.source}</td>
+                    
                 </tr>
             })
             return leads;
@@ -48,7 +51,7 @@ function AllLeads(props) {
                     <h2 style={{ color: "white" }}>Leads</h2>
                 </div>
                 <div className="col-6">
-                    <NavLink to="/createlead" className="btn btn-primary rounded-pill button" > create Contact</NavLink>
+                    <NavLink to="/createlead" className="btn btn-primary rounded-pill button" > create Lead</NavLink>
                 </div>
             </div>
 
@@ -62,6 +65,7 @@ function AllLeads(props) {
                         <th scope="col">source</th>
 
                     </tr >
+                    
                     </thead>
                         <tbody>{getAllLeads()}</tbody>
 
