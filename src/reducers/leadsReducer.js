@@ -27,7 +27,7 @@ const LeadReducer = (state = [], action) => {
             }
         case "DELETE_LEAD":
             if (action.payload.data) {
-                let state = action.payload.data;
+                //let state = action.payload.data;
                 return true
             } else {
                 return false

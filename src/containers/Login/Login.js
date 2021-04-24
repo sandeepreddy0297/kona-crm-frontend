@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import { useForm } from "react-hook-form";
 import {useDispatch,useSelector} from "react-redux"
-import "./login.css";
+// import "./login.css";
 import {loginAction} from "../../actions/userAction"
 import { useHistory } from 'react-router';
 function Login() {
@@ -40,24 +40,24 @@ function Login() {
         // })
     }
     useEffect(() => {
-        if (isLogin.islogin) {
+        if (isLogin) {
            history.push("/dashboard");
          
         }
-          console.log("login status",isLogin.islogin)
+          console.log("login status",isLogin)
         
-    }, [isLogin.islogin])
+    }, [isLogin])
 
     return (
         <div className="login">
 
             <div id="login" >
-                <h1 className="text-center text-white pt-5 headcolor" > <span style={{ color: "#FFFFFF" }}>Kona</span><span style={{ color: "#E9204F" }}>digital.ai</span></h1>
+                <h1 className="text-center text-white pt-5 " > <span style={{ color: "#FFFFFF" }}>Kona</span><span style={{ color: "#E9204F" }}>digital.ai</span></h1>
 
                 <div className="container">
                     <div id="login-row" className="row justify-content-center align-items-center">
-                        <div id="login-column" className="col-md-6">
-                            <div id="login-box" className="col-md-12 text-center">
+                        <div id="login-column" className="col-6">
+                            <div id="login-box" className="col-12 text-center">
                                 <form id="login-form" className="form" onSubmit={handleSubmit(onSubmit)} >
                                     <h3 className="text-center text-info" ><span style={{ color: "white" }}>SIGN IN</span></h3>
                                     <div className=" txt_field form-group">

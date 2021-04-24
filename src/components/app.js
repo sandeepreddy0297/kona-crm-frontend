@@ -24,7 +24,7 @@ function App() {
     <div>
 
       <BrowserRouter>
-        {!islogin.islogin ? (
+        {!islogin ? (
           <div>
             <Route path="/" exact component={Home} />
             <Route path="/login" component={Login} />

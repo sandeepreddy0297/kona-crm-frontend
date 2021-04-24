@@ -6,10 +6,7 @@ export const loginAction = (data) => {
     return async function (dispatch) {
         let response = await axios.post(`${BASE_URL}login`, data)
         console.log("res", response)
-       if(response.data.token){
-           sessionStorage.setItem("token", response.data.token)
-       }
-        //console.log("token", token)
+      
         dispatch({
             type: "LOGIN",
             payload: response
@@ -21,20 +18,25 @@ export const loginAction = (data) => {
 
 
 
-export default function registerAction(data) {
-    return function (dispatch) {
-        axios.post(`${BASE_URL}register`, data).then(
-            response => {
-                const token = response.data.token;
-                sessionStorage.setItem("token", token)
-                console.log("token", token)
-                dispatch({
-                    type: "REGISTER",
-                    payload: data.data
-                })
-            }
-        )
+export default function registerAction(user) {
+    return async function (dispatch) {
+        let response = await axios.post(`${BASE_URL}register`, user)
 
+        dispatch({
+            type: "REGISTER",
+            payload: response
+        })
+    }
+        
+
+}
+
+
+export const changePassword = (body, header) => {
+    let promise = axios.post(`${URL}updatePassword`, body, header)
+    return {
+        type:'CHANGEPASSWORD',
+        payload:promise
     }
 }
 

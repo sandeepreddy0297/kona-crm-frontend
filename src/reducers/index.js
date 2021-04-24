@@ -3,9 +3,9 @@ import LeadReducer from './leadsReducer';
 import loginReducer from "./userReducer"
 
 const rootReducer = combineReducers({
-  // state: (state = {}) => state
-
-  login:loginReducer,
+  
+  isUserLogin:loginReducer,
+  //login:loginReducer,
   leads:LeadReducer
 });
 

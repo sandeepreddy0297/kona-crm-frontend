@@ -1,15 +1,14 @@
 import axios from "axios";
 const BASE_URL="http://localhost:8080/v1/leads/";
 
-let token = sessionStorage.getItem("token")
-        const header = {
-            headers: { 'Authorization': `Bearer ${token}` }
-        }
+
 
 export const leadAction= (data)=> {
     return async function(dispatch){
-        // console.log(token);
-        // console.log(header)
+        let token = sessionStorage.getItem("token")
+        const header = {
+            headers: { 'Authorization': `Bearer ${token}` }
+        }
      let response = await axios.post(`${BASE_URL}createlead`,data,header)
      console.log("res", response)
              dispatch({
@@ -21,6 +20,10 @@ export const leadAction= (data)=> {
  
  export const getallLeads=(header)=>{
      return async function(dispatch){
+        let token = sessionStorage.getItem("token")
+        const header = {
+            headers: { 'Authorization': `Bearer ${token}` }
+        }
          let response = await axios.get(`${BASE_URL}allleads`,header)
          console.log("all leads response ", response);
          dispatch({
@@ -33,6 +36,10 @@ export const leadAction= (data)=> {
  export const getlead = (id) => {
     return async function(dispatch){
         
+        let token = sessionStorage.getItem("token")
+        const header = {
+            headers: { 'Authorization': `Bearer ${token}` }
+        }
         let response = await axios.get(`${BASE_URL}lead/${id}`, header);
         console.log("one lead information",response)
         dispatch({
@@ -44,8 +51,12 @@ export const leadAction= (data)=> {
 
 export const editLead = (lead)=>{
     return async function(dispatch){
+        let token = sessionStorage.getItem("token")
+        const header = {
+            headers: { 'Authorization': `Bearer ${token}` }
+        }
         let response = await axios.put(`${BASE_URL}editlead`, lead, header);
-            console.log(response);
+            console.log( "edit lead response",response);
             dispatch({
                 type:"EDIT_LEAD",
                 payload:response
@@ -55,6 +66,10 @@ export const editLead = (lead)=>{
 
 export const deleteLead = (id) =>{
     return async function(dispatch){
+        let token = sessionStorage.getItem("token")
+        const header = {
+            headers: { 'Authorization': `Bearer ${token}` }
+        }
         let response= await axios.delete(`${BASE_URL}removelead/${id}`,header)
         dispatch({
             type:"DELETE_LEAD",

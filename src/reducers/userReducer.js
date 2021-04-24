@@ -1,18 +1,34 @@
-const initialState = {
-    islogin:false
-};
+// const initialState = {
+//     islogin:false
+// };
 
-const loginReducer = (state = initialState, action) => {
+const loginReducer = (state = null, action) => {
     // const { type, payload } = action;
     switch (action.type) {
-        case "LOGIN":
-              console.log("reducer state",state)
-              console.log("reducer",action.payload)
-            return {islogin:true};
-         case "REGISTER":
-             console.log("iam in register case",action.payload.data)
-             return{isLogin:true}
+        case 'REGISTER':
+            if (action.payload.data.token) {
+                sessionStorage.setItem('token', action.payload.data.token);
+                return true;
+            }
+            else {
+                return false;
+            }
 
+        case 'LOGIN':
+            if (action.payload.data.token) {
+                sessionStorage.setItem("token", action.payload.data.token);
+                return true;
+            } else {
+                return false;
+            }
+
+        case 'CHANGEPASSWORD':
+            if (action.payload.data) {
+                sessionStorage.removeItem('token');
+                return false;
+            } else {
+                return true;
+            }
         default:
             return state;
     }
