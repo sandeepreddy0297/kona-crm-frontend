@@ -57,12 +57,12 @@ function AllLeads(props) {
 
             <div className="row">
                 <div className="col-12">
-                    <table className="table"><thead><tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">MobileNo</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">technology</th>
-                        <th scope="col">source</th>
+                    <table className="table-content"><thead><tr>
+                        <th >Name</th>
+                        <th >MobileNo</th>
+                        <th >Email</th>
+                        <th >technology</th>
+                        <th >source</th>
 
                     </tr >
                     

@@ -21,9 +21,9 @@ export const leadAction= (data)=> {
  export const getallLeads=(header)=>{
      return async function(dispatch){
         let token = sessionStorage.getItem("token")
-        const header = {
-            headers: { 'Authorization': `Bearer ${token}` }
-        }
+        // const header = {
+        //     headers: { 'Authorization': `Bearer ${token}` }
+        // }
          let response = await axios.get(`${BASE_URL}allleads`,header)
          console.log("all leads response ", response);
          dispatch({

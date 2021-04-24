@@ -15,8 +15,8 @@ import changePassword from '../containers/chnagepassword/changePassword';
 import EditLead from '../containers/Leads/EditLead';
 
 function App() {
-  const islogin = useSelector(state => state.login)
-  console.log("check status",islogin)
+  const islogin = useSelector(state => state.isUserLogin)
+  console.log("check status", islogin)
 
 
   return (
@@ -24,34 +24,22 @@ function App() {
     <div>
 
       <BrowserRouter>
-        {!islogin ? (
-          <div>
+        <div className="row">
+          <div className="col-2 px-0">
+            {islogin ? <SideNav /> : null}
+          </div>
+          <div className="col-10 px-0">
+            {islogin ? <TopNav /> : null}
             <Route path="/" exact component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-          </div>
-        ) : (
-          
-              <div className="row">
-          <div className="col-2 px-0">
-            <SideNav />
-          </div>
-          <div className="col-10 px-0">
-            <TopNav />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/leads" component={AllLeads} />
             <Route path="/createlead" component={Createlead} />
             <Route path="/lead/:id" component={Lead} />
-            <Route path="/cahngepassword" component={changePassword} />
-            
-            
+            <Route path="/changepassword" component={changePassword} />
           </div>
         </div>
-
-
-        )}
-
-
 
       </BrowserRouter>
     </div>
@@ -62,4 +50,4 @@ export default App;
 
 
 
-{/* <Route path="/lead/:id" component={Lead} /> */}
+{/* <Route path="/lead/:id" component={Lead} /> */ }

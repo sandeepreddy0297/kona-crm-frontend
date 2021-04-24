@@ -5,10 +5,25 @@
     padding: 0;
     
 }
-.table{
+.table-content{
     background-color: #FEFEFE0D;
     color:#FEFEFE;
-    
+    border-collapse:collapse ;
+    margin :25px 0;
+    width: 100%;
+    font-size: 0.9em;
+    border-radius: 25px;
+    margin-right:10px ;
+
+}
+.table-content thead tr{
+   text-align: center;
+   font-weight: bold;
+}
+.table-content th,
+.table-content td{
+    padding:12px 15px;
+    text-align:start;
 }
 .button{
     float: right;

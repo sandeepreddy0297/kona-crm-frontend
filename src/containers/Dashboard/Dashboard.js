@@ -1,22 +1,27 @@
 import React, { useEffect } from 'react';
 import "./Dashboard.css";
-
-import { useSelector } from "react-redux";
+import {getallLeads} from "../../actions/leadsAction"
+import { useDispatch,useSelector } from "react-redux";
 
 
 function Dashboard(props) {
-
-  const islogin = useSelector(state => state.login)
-  console.log("login status", islogin.islogin)
+const dispatch = useDispatch()
+  const islogin = useSelector(state => state.isUserLogin)
+  console.log("login status", islogin)
   const leads = useSelector(appState => appState.leads);
  console.log("dashboard",leads)
-  // const token=sessionStorage.getItem("token");
-  // console.log("token dashboard",token)
+
   useEffect(() => {
-    if (!islogin.islogin) {
-      props.history.push("/");
-    }
-  })
+    if (!islogin) {
+      props.history.push("/login");
+    }else {
+      let token = sessionStorage.getItem("token")
+      const header = {
+          headers: { 'Authorization': `Bearer ${token}` }
+      }
+      dispatch(getallLeads(header));
+  }
+  },[])
 
 
   return (

@@ -1,19 +1,21 @@
 import React, { useState,useEffect } from 'react'
 import { useForm } from "react-hook-form";
 import {useDispatch,useSelector} from "react-redux"
-// import "./login.css";
+import "./login.css";
 import {loginAction} from "../../actions/userAction"
 import { useHistory } from 'react-router';
-function Login() {
+
+
+function Login(props) {
     const [state, setState] = useState({
         email: "",
         password: ""
     })
     const { register, handleSubmit, errors } = useForm();
     const dispatch=useDispatch();
-    const history=useHistory();
-   const isLogin = useSelector(state =>state.login)
-   console.log()
+   
+   const isLogin = useSelector(state =>state.isUserLogin)
+   
     
     const captureData = (event) => {
         var name = event.target.name;
@@ -26,10 +28,10 @@ function Login() {
     }
 
     
-    const onSubmit = (state) => {
+    const onSubmit = (data) => {
 
-        console.log(state);
-        dispatch(loginAction(state)) //newuser login
+        console.log(data);
+        dispatch(loginAction(data)) //newuser login
 
         // dispatch({
         //     type:"LOGIN",
@@ -41,12 +43,14 @@ function Login() {
     }
     useEffect(() => {
         if (isLogin) {
-           history.push("/dashboard");
+            console.log("login success")
+            
+          props.history.push("/dashboard");
          
         }
-          console.log("login status",isLogin)
+         
         
-    }, [isLogin])
+    })
 
     return (
         <div className="login">
