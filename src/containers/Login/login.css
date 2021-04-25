@@ -1,47 +1,28 @@
-
-.login {
-    margin: 0;
-    padding: 0;
-    background-color: #1B203A;
-    /* height: 100%; */
-  }
-  #login .container #login-row #login-column #login-box {
-    margin-top: 60px;
-    max-width: 500px;
-   
-   border-radius: 19px;
-    background-color: #252C48;
-  }
-  #login .container #login-row #login-column #login-box #login-form {
-    /* padding: 20px; */
-  }
-  #login .container #login-row #login-column #login-box #login-form #register-link {
-    margin-top: -85px;
-  }
-  
-  .pass{
-      color: #FFFFFF80;
-  }
-  .btn{
-      background-color: #E9204F;
-  }
-  .txt_field{
-    position: relative;
-    border-bottom: 2px solid gray;
-    margin: 30px 0;
-  }
-  .txt_field input{
-    /* width: 100%;
-    padding: 0 5px;
-    height: 40px;
-    font-size:16px; */
-    border: none;
-    background: none;
-    outline: none;
+#cover {
+    
+  background-size: cover;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
-.txt_field input:focus ,
-.txt_field input:focus {
-    top: -5px;
-    width: 100%;
-    background-color: #FFFFFF80;
+
+#cover-caption {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* only used for background overlay not needed for centering */
+form:before {
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color:#252C48;
+  z-index: -1;
+  border-radius: 10px;
 }

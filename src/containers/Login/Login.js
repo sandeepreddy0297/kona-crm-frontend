@@ -1,8 +1,8 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm } from "react-hook-form";
-import {useDispatch,useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import "./login.css";
-import {loginAction} from "../../actions/userAction"
+import { loginAction } from "../../actions/userAction"
 import { useHistory } from 'react-router';
 
 
@@ -12,11 +12,11 @@ function Login(props) {
         password: ""
     })
     const { register, handleSubmit, errors } = useForm();
-    const dispatch=useDispatch();
-   
-   const isLogin = useSelector(state =>state.isUserLogin)
-   
-    
+    const dispatch = useDispatch();
+
+    const isLogin = useSelector(state => state.isUserLogin)
+
+
     const captureData = (event) => {
         var name = event.target.name;
         var value = event.target.value;
@@ -24,10 +24,10 @@ function Login(props) {
         setState(prestate => ({
             ...prestate, [name]: value
         }))
-        
+
     }
 
-    
+
     const onSubmit = (data) => {
 
         console.log(data);
@@ -44,24 +44,23 @@ function Login(props) {
     useEffect(() => {
         if (isLogin) {
             console.log("login success")
-            
-          props.history.push("/dashboard");
-         
+
+            props.history.push("/dashboard");
+
         }
-         
-        
+
+
     })
 
     return (
-        <div className="login">
-
-            <div id="login" >
-                <h1 className="text-center text-white pt-5 " > <span style={{ color: "#FFFFFF" }}>Kona</span><span style={{ color: "#E9204F" }}>digital.ai</span></h1>
-
-                <div className="container">
-                    <div id="login-row" className="row justify-content-center align-items-center">
-                        <div id="login-column" className="col-6">
-                            <div id="login-box" className="col-12 text-center">
+        <React.Fragment>
+            <section id="cover" className="min-vh-100">
+                <div id="cover-caption">
+                    <div className="container">
+                        <div className="row text-white">
+                            <div className="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                                
+                                <div className="px-2">
                                 <form id="login-form" className="form" onSubmit={handleSubmit(onSubmit)} >
                                     <h3 className="text-center text-info" ><span style={{ color: "white" }}>SIGN IN</span></h3>
                                     <div className=" txt_field form-group">
@@ -90,16 +89,13 @@ function Login(props) {
 
                                     </div>
                                 </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-
-
-        </div>
+            </section>
+        </React.Fragment>
 
     )
 }
