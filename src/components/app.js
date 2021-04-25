@@ -17,7 +17,7 @@ import EditLead from '../containers/Leads/EditLead';
 const Dashboard = React.lazy(() => import('../containers/Dashboard/Dashboard'))
 const AllLeads = React.lazy(() => import('../containers/Leads/AllLeads'))
 const Createlead = React.lazy(() => import('../containers/Leads/createlead'))
-const Lead = React.lazy(() => import('../containers/Leads/Lead'))
+const  Lead= React.lazy(() => import('../containers/Leads/Lead'))
 
 function App() {
   const islogin = useSelector(state => state.isUserLogin)
@@ -51,6 +51,7 @@ function App() {
                 <Route path="/createlead" component={Createlead} />
                 <Route path="/lead/:id" component={Lead} />
                 <Route path="/changepassword" component={changePassword} />
+                <Route path="/editlead/:id" component={EditLead} />
               </Switch>
             </React.Suspense>
           </div>

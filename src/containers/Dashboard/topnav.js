@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import profile from "../images/profile1.png"
 
 function TopNav() {
     return (
@@ -23,7 +24,7 @@ function TopNav() {
 
                     <li className=" dropdown px-5">
                         <a className="nav-link " href="#" id="navbardrop" data-toggle="dropdown">
-                            <img className=" rounded-circle " style={{ height: '50' + 'px', width: '50' + 'px' }}  src="https://lh3.googleusercontent.com/proxy/cyMOxbJJwKqjl8e1j6EotAuQSEp5L4zhXZE0rFcow9IU2w-kLodAQIZYctVXjAbgK_seXF89ysCcelPpyq1oWzLsLju5x-vE84hnoOtUb5TS07MwBfvF" alt="..." />
+                            <img className=" rounded-circle " style={{ height: '50' + 'px', width: '50' + 'px' }} src={profile} alt="..." />
                         </a>
                         <div className="dropdown-menu " >
                             <NavLink className="dropdown-item" style={{backgroundColor:"white",color:"black"}} href="#" to="#">Profile</NavLink>
