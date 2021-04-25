@@ -1,0 +1,14 @@
+.nav a.active{
+    border-bottom: 3px solid red;
+}
+
+.displayLead{
+    background-color: #252C48 ;
+    border-radius: 25px;
+    height: 100%;
+}
+.profile-img{
+    height: 107px;
+    width: 100px;
+}
+

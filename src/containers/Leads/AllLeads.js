@@ -38,6 +38,8 @@ function AllLeads(props) {
                     <td>{lead.source}</td>
                     
                 </tr>
+                
+                
             })
             return leads;
         }
@@ -55,7 +57,7 @@ function AllLeads(props) {
                 </div>
             </div>
 
-            <div className="row">
+            <div className=" row px-2">
                 <div className="col-12">
                     <table className="table-content"><thead><tr>
                         <th >Name</th>
@@ -68,6 +70,7 @@ function AllLeads(props) {
                     
                     </thead>
                         <tbody>{getAllLeads()}</tbody>
+                        
 
                     </table>
 

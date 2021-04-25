@@ -2,14 +2,14 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteLead, getlead } from '../../actions/leadsAction';
 
-import "./le.css";
+import "./lead.css";
 
 function Lead(props) {
     const dispatch = useDispatch()
     const lead = useSelector(state => state.leads);
     const id = props.location.pathname.split("/")[2]
     console.log(lead)
-    console.log("props",props)
+    console.log("props", props)
     console.log('specific lead props', props.location.pathname.split("/")[2])
 
     useEffect(() => {
@@ -17,9 +17,9 @@ function Lead(props) {
     }, [])
 
     const DeleteLead = (event) => {
-       // event.preventDefault();
+        // event.preventDefault();
         dispatch(deleteLead(id));
-        if(lead){
+        if (lead) {
             props.history.push("/leads")
         }
     }
@@ -30,95 +30,132 @@ function Lead(props) {
 
 
     return (
-        <div className="text-white" style={{ backgroundColor: " #252C48", opacity: "1" }}>
-            <div className="container-fluid px-4 bordered">
-            <h2 className="px-4">{lead.name}</h2>
-            
-            <button>Edit</button>
-            <button onClick={DeleteLead}>Delete</button>
-                <div className="row">
-                    <div className="col-6 px-5">
-                        
-                        <p>email <span className="px-5">{lead.email}</span></p>
-                        <p>technology <span className="px-5">{lead.technology}</span></p>
-                    </div>
-                    <div className="col-6 ">
-                        <p>phone <span className="px-5">{lead.phone}</span></p>
-                        <p>source <span className="px-5">{lead.source}</span></p>
+        <React.Fragment>
+            <div className="text-white">
+                <h2 className="px-4" style={{ fontSize: '1.2' + 'em' }}>leads > {lead.name}</h2>
+            </div>
 
-                    </div>
+            <div className="row px-4 text-white">
+                <div className="col-12 displayLead">
 
-
-                </div>
-                <hr className="solid" />
-                <div className="row">
-                    <div className="col-12">
-                        <h1>lead stage</h1>
-
-                    </div>
-
-                </div>
-                <div className=" row container">
                     <div className="row">
-                        <div className="col-xs-12 ">
-                            <ul className="nav nav-tabs ">
-                                <li ><a className="nav-item nav-link active" data-toggle="tab" href="#home">Home</a></li>
-                                <li ><a className="nav-item nav-link " data-toggle="tab" href="#menu1">Menu 1</a></li>
-                                <li ><a className="nav-item nav-link " data-toggle="tab" href="#menu2">Menu 2</a></li>
-                                <li ><a className="nav-item nav-link " data-toggle="tab" href="#menu3">Menu 3</a></li>
-                            </ul>
+                        <div className="col-1 p-3">
 
-                            <div className="tab-content  py-3 px-3 px-0">
-                                <div id="home" className="tab-pane fade in active">
-                                    <h3>HOME</h3>
 
+                            <img src="https://lh3.googleusercontent.com/proxy/cyMOxbJJwKqjl8e1j6EotAuQSEp5L4zhXZE0rFcow9IU2w-kLodAQIZYctVXjAbgK_seXF89ysCcelPpyq1oWzLsLju5x-vE84hnoOtUb5TS07MwBfvF" alt="..." className="profile-img rounded-circle" />
+                        </div>
+                        <div className="col-7 px-4 pt-4">
+                            <h3>{lead.name}</h3>
+                            <div className="row" style={{ fontSize: '0.9' + 'em' }}>
+                                <div className="col-6" >
+                                    <p>email  <span className="pl-5">{lead.email}</span> </p>
+                                    <p>technology  <span className="pl-4">{lead.technology}</span></p>
                                 </div>
-                                <div id="menu1" className="tab-pane fade in">
-                                    <h3>Menu 1</h3>
-
+                                <div className="col-6">
+                                    <p>phone   <span className="pl-4">{lead.phone}</span></p>
+                                    <p>source   <span className="pl-4">{lead.source}</span></p>
                                 </div>
-                                <div id="menu2" className="tab-pane fade in">
-                                    <h3>Menu 2</h3>
 
-                                </div>
-                                <div id="menu3" className="tab-pane fade in">
-                                    <h3>Menu 3</h3>
-
-                                </div>
                             </div>
 
+                            <hr />
+                            <div style={{ fontSize: '0.9' + 'em' }}>
+                                <p>lead owner   <span className="pl-4">yet to write</span></p>
 
+                            </div>
+
+                        </div>
+                        <div className="col-4">
+                            <h1>extra attachment</h1>
                         </div>
                     </div>
 
 
+
+                    <hr />
+                    <div>
+                        <h1>Lead stage</h1>
+                    </div>
+
+                    <hr />
+
                 </div>
+
+
             </div>
-        </div>
+
+
+
+        </React.Fragment>
+
+
     )
 }
 
 export default Lead
 
-{/* <nav>
-                                <div className="nav nav-tabs " >
-                                    <a className="nav-item nav-link active" id="nav-home" data-toggle="tab" href="#home" role="tab"  >Home</a>
-                                    <a className="nav-item nav-link" id="nav-profile" data-toggle="tab" href="#profile" role="tab" >Profile</a>
-                                    <a className="nav-item nav-link" id="nav-contact" data-toggle="tab" hr="#contact" role="tab" >Contact</a>
-                                    <a className="nav-item nav-link" id="nav-about" data-toggle="tab" href="#about" role="tab" >About</a>
-                                </div>
-                            </nav>
-                            <div className="tab-content py-3 px-3 px-sm-0" >
-                                <div className="tab-pane fade in active " id="home" role="tabpanel" >
-                                    Home
-                                    </div>
-                                <div className="tab-pane fade" id="profile" role="tabpanel" >
-                                    profile
-                                    </div>
-                                <div className="tab-pane fade" id="contact" role="tabpanel" >
-                                    contact
-                                    </div>
-                                <div className="tab-pane fade" id="about" role="tabpanel" >
-                                    about
-                                      </div>
-                            </div> */}
+{/* <div className="text-white" style={{ backgroundColor: " #252C48", opacity: "1" }}>
+<div className="container-fluid px-4 bordered">
+<h2 className="px-4">{lead.name}</h2>
+
+<button>Edit</button>
+<button onClick={DeleteLead}>Delete</button>
+    <div className="row">
+        <div className="col-6 px-5">
+            
+            <p>email <span className="px-5">{lead.email}</span></p>
+            <p>technology <span className="px-5">{lead.technology}</span></p>
+        </div>
+        <div className="col-6 ">
+            <p>phone <span className="px-5">{lead.phone}</span></p>
+            <p>source <span className="px-5">{lead.source}</span></p>
+
+        </div>
+
+
+    </div>
+    <hr className="solid" />
+    <div className="row">
+        <div className="col-12">
+            <h1>lead stage</h1>
+
+        </div>
+
+    </div>
+    <div className=" row container">
+        <div className="row">
+            <div className="col-xs-12 ">
+                <ul className="nav nav-tabs ">
+                    <li ><a className="nav-item nav-link active" data-toggle="tab" href="#home">Home</a></li>
+                    <li ><a className="nav-item nav-link " data-toggle="tab" href="#menu1">Menu 1</a></li>
+                    <li ><a className="nav-item nav-link " data-toggle="tab" href="#menu2">Menu 2</a></li>
+                    <li ><a className="nav-item nav-link " data-toggle="tab" href="#menu3">Menu 3</a></li>
+                </ul>
+
+                <div className="tab-content  py-3 px-3 px-0">
+                    <div id="home" className="tab-pane fade in active">
+                        <h3>HOME</h3>
+
+                    </div>
+                    <div id="menu1" className="tab-pane fade in">
+                        <h3>Menu 1</h3>
+
+                    </div>
+                    <div id="menu2" className="tab-pane fade in">
+                        <h3>Menu 2</h3>
+
+                    </div>
+                    <div id="menu3" className="tab-pane fade in">
+                        <h3>Menu 3</h3>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</div> */}

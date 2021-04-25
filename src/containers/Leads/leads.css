@@ -25,6 +25,13 @@
     padding:12px 15px;
     text-align:start;
 }
+
+
+
+.table-content tbody tr:hover{
+    background-color:  #E9204F40;
+}
+
 .button{
     float: right;
 }
