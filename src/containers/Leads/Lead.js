@@ -32,7 +32,7 @@ function Lead(props) {
     return (
         <React.Fragment>
             <div className="text-white">
-                <h2 className="px-4" style={{ fontSize: '1.2' + 'em' }}>leads > {lead.name}</h2>
+                <h2 className="px-4" style={{ fontSize: '1.2' + 'em' }}>leads  {lead.name}</h2>
             </div>
 
             <div className="row px-4 text-white">
