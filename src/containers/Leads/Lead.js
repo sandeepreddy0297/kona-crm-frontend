@@ -45,7 +45,10 @@ function Lead(props) {
                             <img src="https://lh3.googleusercontent.com/proxy/cyMOxbJJwKqjl8e1j6EotAuQSEp5L4zhXZE0rFcow9IU2w-kLodAQIZYctVXjAbgK_seXF89ysCcelPpyq1oWzLsLju5x-vE84hnoOtUb5TS07MwBfvF" alt="..." className="profile-img rounded-circle" />
                         </div>
                         <div className="col-7 px-4 pt-4">
-                            <h3>{lead.name}</h3>
+                            <h3>{lead.name}  
+                                <i  className='fas fa-pencil-alt px-2 text-white' style={{fontsize:'36'+'px'}}></i>
+                                <i onClick={DeleteLead} className='	fas fa-trash-alt px-2 text-white' style={{fontsize:'36'+'px'}}></i>
+                            </h3>
                             <div className="row" style={{ fontSize: '0.9' + 'em' }}>
                                 <div className="col-6" >
                                     <p>email  <span className="pl-5">{lead.email}</span> </p>
