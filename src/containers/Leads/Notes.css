@@ -1,0 +1,35 @@
+.notesDisplay{
+    background-color: #1B203A;
+    /* padding: 120px; */
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top:15px ;
+}
+
+.notesText p{
+    font-size: 14px;
+    
+}
+.modal-dialog {
+    height: 80% !important;
+    padding-top:10%;
+  }
+  
+  .modal-content {
+    height: 100% !important;
+    
+  }
+  
+  .modal-body {
+    height: 80%;
+
+  }
+
+  .textarea{
+      border: none;
+      resize: none;
+      color: white;
+      width: 100%;
+      
+  }

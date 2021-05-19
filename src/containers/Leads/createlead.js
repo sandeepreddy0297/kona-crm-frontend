@@ -26,7 +26,7 @@ function Createlead(props) {
 
         console.log(data);
         dispatch(leadAction(data)) 
-        props.history.push("/leads")  //creatinewlead
+        props.history.push("/leads")  
     }
    // console.log(state)
 

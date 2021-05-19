@@ -3,14 +3,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import { deleteLead, getlead } from '../../actions/leadsAction';
 import profile from "../images/profile.png"
 import "./lead.css";
+import Notes from './Notes';
+import Tasks from './Tasks';
+import { BrowserRouter, NavLink, Route } from 'react-router-dom';
 
 function Lead(props) {
+
     const dispatch = useDispatch()
     const lead = useSelector(state => state.leads);
     const id = props.location.pathname.split("/")[2]
     console.log(lead)
     console.log("props", props)
-    console.log('specific lead props', props.location.pathname.split("/")[2])
+    console.log('specific lead props', id)
 
     useEffect(() => {
         dispatch(getlead(id))
@@ -24,15 +28,16 @@ function Lead(props) {
         }
     }
 
-    const EditLead=()=>{
+    const EditLead = () => {
         props.history.push(`/editlead/${id}`)
     }
 
 
     return (
         <React.Fragment>
+            <BrowserRouter>
             <div className="text-white">
-                <h2 className="px-4" style={{ fontSize: '1.2' + 'em' }}>leads  {lead.name}</h2>
+                <p className="px-4" style={{ fontSize: '1.5' + 'em' }}>leads  >  {lead.name}</p>
             </div>
 
             <div className="row px-4 text-white">
@@ -45,18 +50,18 @@ function Lead(props) {
                             <img src={profile} alt="..." className="profile-img rounded-circle" />
                         </div>
                         <div className="col-7 px-4 pt-4">
-                            <h3>{lead.name}  
-                                <i  onClick={EditLead} className='fas fa-pencil-alt px-2 text-white' style={{fontsize:'36'+'px'}}></i>
-                                <i onClick={DeleteLead} className='	fas fa-trash-alt px-2 text-white' style={{fontsize:'36'+'px'}}></i>
-                            </h3>
-                            <div className="row" style={{ fontSize: '0.9' + 'em' }}>
+                            <h4 className="pb-4">{lead.name}
+                                <i onClick={EditLead} className='fas fa-pencil-alt px-2 text-white '></i>
+                                <i onClick={DeleteLead} className='	fas fa-trash-alt px-2 text-white ' ></i>
+                            </h4>
+                            <div className="row" style={{ fontSize: '15' + 'px' }}>
                                 <div className="col-6" >
-                                    <p>email  <span className="pl-5">{lead.email}</span> </p>
-                                    <p>technology  <span className="pl-4">{lead.technology}</span></p>
+                                    <p>Email  <span style={{ paddingLeft: "60" + "px" }}>{lead.email}</span> </p>
+                                    <p>Technology  <span className="pl-4">{lead.technology}</span></p>
                                 </div>
                                 <div className="col-6">
-                                    <p>phone   <span className="pl-4">{lead.phone}</span></p>
-                                    <p>source   <span className="pl-4">{lead.source}</span></p>
+                                    <p>Phone   <span className="pl-4">{lead.phone}</span></p>
+                                    <p>Source   <span className="pl-4">{lead.source}</span></p>
                                 </div>
 
                             </div>
@@ -78,9 +83,40 @@ function Lead(props) {
                     <hr />
                     <div>
                         <h1>Lead stage</h1>
+
+
                     </div>
 
                     <hr />
+                    <nav>
+                        <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                            <NavLink to={`/notes/${lead._id}`} className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</NavLink>
+                            <a className="nav-item nav-link" id="nav-notes-tab" data-toggle="tab" href="#nav-notes" role="tab" aria-controls="nav-notes" aria-selected="false">NOTES</a>
+                            <a className="nav-item nav-link" id="nav-tasks-tab" data-toggle="tab" href="#nav-tasks" role="tab" aria-controls="nav-tasks" aria-selected="false">TASKS</a>
+                            <a className="nav-item nav-link" id="nav-checklist-tab" data-toggle="tab" href="#nav-checklist" role="tab" aria-controls="nav-checklist" aria-selected="false">CHECKLIST</a>
+                            <a className="nav-item nav-link" id="nav-email-tab" data-toggle="tab" href="#nav-email" role="tab" aria-controls="nav-email" aria-selected="true">EMAIL</a>
+                        </div>
+                    </nav>
+                    <div className="tab-content" id="nav-tabContent">
+                        <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            Home
+                         </div>
+                        <div className="tab-pane fade" id="nav-notes" role="tabpanel" aria-labelledby="nav-notes-tab">
+                        {/* <Notes /> */}
+
+                        <Route exact path={`/notes/${lead._id}`}   > <Notes /> </Route>
+                        </div>
+                        <div className="tab-pane fade" id="nav-tasks" role="tabpanel" aria-labelledby="nav-tasks-tab">
+                            <Tasks/>
+                        </div>
+                        <div className="tab-pane fade" id="nav-checklist" role="tabpanel" aria-labelledby="nav-checklist-tab" >
+                            CHECKLIST
+                        </div>
+                        <div className="tab-pane fade" id="nav-email" role="tabpanel" aria-labelledby="nav-email-tab">
+                            EMAILS
+                        </div>
+                    </div>
+
 
                 </div>
 
@@ -88,7 +124,7 @@ function Lead(props) {
             </div>
 
 
-
+  </BrowserRouter>
         </React.Fragment>
 
 
@@ -97,68 +133,4 @@ function Lead(props) {
 
 export default Lead
 
-{/* <div className="text-white" style={{ backgroundColor: " #252C48", opacity: "1" }}>
-<div className="container-fluid px-4 bordered">
-<h2 className="px-4">{lead.name}</h2>
 
-<button>Edit</button>
-<button onClick={DeleteLead}>Delete</button>
-    <div className="row">
-        <div className="col-6 px-5">
-            
-            <p>email <span className="px-5">{lead.email}</span></p>
-            <p>technology <span className="px-5">{lead.technology}</span></p>
-        </div>
-        <div className="col-6 ">
-            <p>phone <span className="px-5">{lead.phone}</span></p>
-            <p>source <span className="px-5">{lead.source}</span></p>
-
-        </div>
-
-
-    </div>
-    <hr className="solid" />
-    <div className="row">
-        <div className="col-12">
-            <h1>lead stage</h1>
-
-        </div>
-
-    </div>
-    <div className=" row container">
-        <div className="row">
-            <div className="col-xs-12 ">
-                <ul className="nav nav-tabs ">
-                    <li ><a className="nav-item nav-link active" data-toggle="tab" href="#home">Home</a></li>
-                    <li ><a className="nav-item nav-link " data-toggle="tab" href="#menu1">Menu 1</a></li>
-                    <li ><a className="nav-item nav-link " data-toggle="tab" href="#menu2">Menu 2</a></li>
-                    <li ><a className="nav-item nav-link " data-toggle="tab" href="#menu3">Menu 3</a></li>
-                </ul>
-
-                <div className="tab-content  py-3 px-3 px-0">
-                    <div id="home" className="tab-pane fade in active">
-                        <h3>HOME</h3>
-
-                    </div>
-                    <div id="menu1" className="tab-pane fade in">
-                        <h3>Menu 1</h3>
-
-                    </div>
-                    <div id="menu2" className="tab-pane fade in">
-                        <h3>Menu 2</h3>
-
-                    </div>
-                    <div id="menu3" className="tab-pane fade in">
-                        <h3>Menu 3</h3>
-
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-
-
-    </div>
-</div>
-</div> */}

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useState,useEffect} from 'react'
 import {useForm} from 'react-hook-form'
 import {useDispatch, useSelector} from 'react-redux'
 import {editLead, getlead} from '../../actions/leadsAction' 
@@ -10,6 +10,21 @@ function EditLead(props){
    const islogin = useSelector(appState => appState.isUserLogin)
     const id = props.location.pathname.split("/")[2]
 
+    const [state, setState] = useState({
+        name: "",
+        email: "",
+        source: "",
+        technology: "",
+        phone: "",
+    })
+    const captureData = (event) => {
+        var name = event.target.name;
+        var value = event.target.value;
+
+        setState(state => ({
+            ...state, [name]: value
+        }))
+    }
     useEffect(()=>{
         if(islogin){
         dispatch(getlead(id));
@@ -35,27 +50,27 @@ function EditLead(props){
                             <form className="form" onSubmit={handleSubmit(onSubmit)}>
                                 <div className="form-group">
                                     <label htmlFor="email">Name:</label>
-                                    <input type="text" className="form-control" name="name" defaultValue={lead.name} placeholder="Enter email" id="name" {...register('name', { required: { value: true, message: "name is required" } })} />
+                                    <input type="text" className="form-control" name="name"  onChange={captureData} defaultValue={lead.name} placeholder="Enter email" id="name" ref={register( { required: { value: true, message: "name is required" } })} />
                                     {errors.name && (<p style={{ color: 'red', fontSize: 15 + 'px', textAlign: "center" }} >{errors.name.message}</p>)}
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="email">Email:</label>
-                                    <input type="email" className="form-control" name="email" defaultValue={lead.email} placeholder="Enter email" id="email" {...register('email', { required: { value: true, message: "Email is required" }, pattern: { value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, message: 'Invalid email format' } })} />
+                                    <input type="email" className="form-control" name="email" onChange={captureData} defaultValue={lead.email} placeholder="Enter email" id="email" ref={register({ required: { value: true, message: "Email is required" }, pattern: { value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, message: 'Invalid email format' } })} />
                                     {errors.email && (<p style={{ color: 'red', fontSize: 15 + 'px', textAlign: "center" }} >{errors.email.message}</p>)}
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="email">Mobile:</label>
-                                    <input type="text" className="form-control" name="phone" defaultValue={lead.phone} placeholder="Enter mobile number" id="mobile" {...register('phone', { required: { value: true, message: "mobile number is required" }, minLength: { value: 10, message: "Invalid mobile number" }, maxLength: { value: 10, message: "Invalid mobile number" } })} />
+                                    <input type="text" className="form-control" name="phone" onChange={captureData} defaultValue={lead.phone} placeholder="Enter mobile number" id="mobile" ref={register({ required: { value: true, message: "mobile number is required" }, minLength: { value: 10, message: "Invalid mobile number" }, maxLength: { value: 10, message: "Invalid mobile number" } })} />
                                     {errors.phone && (<p style={{ color: 'red', fontSize: 15 + 'px', textAlign: "center" }} >{errors.phone.message}</p>)}
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="email">Technology:</label>
-                                    <input type="text" className="form-control" name="technology" defaultValue={lead.technology} placeholder="Enter Technology" id="technology" {...register('technology', { required: { value: true, message: "Technology is required" } })} />
+                                    <input type="text" className="form-control" name="technology" onChange={captureData} defaultValue={lead.technology} placeholder="Enter Technology" id="technology" ref={register( { required: { value: true, message: "Technology is required" } })} />
                                     {errors.technology && (<p style={{ color: 'red', fontSize: 15 + 'px', textAlign: "center" }} >{errors.technology.message}</p>)}
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="email">Source:</label>
-                                    <input type="text" className="form-control" name="source" defaultValue={lead.source} placeholder="Enter source" id="source" {...register('source', { required: { value: true, message: "source required" } })} />
+                                    <input type="text" className="form-control" name="source" onChange={captureData} defaultValue={lead.source} placeholder="Enter source" id="source" ref={register( { required: { value: true, message: "source required" } })} />
                                     {errors.source && (<p style={{ color: 'red', fontSize: 15 + 'px', textAlign: "center" }} >{errors.source.message}</p>)}
                                 </div>
                                 {/* <div className="form-group">
@@ -74,4 +89,4 @@ function EditLead(props){
     )
 }
 
-export default EditLead
+export default EditLead;

@@ -9,6 +9,7 @@ function AllLeads(props) {
     const dispatch = useDispatch();
     var AllLeads = useSelector(state => state.leads);
     //console.log(AllLeads);
+    console.log("props",props)
 
     const [state, setState] = useState({
         "lead": {}
@@ -55,7 +56,7 @@ function AllLeads(props) {
                 </div>
             </div>
 
-            <div className=" row px-4">
+            <div className=" row px-2">
                 <div className="col-12">
                     <table className="table-content"><thead><tr>
                         <th >Name</th>

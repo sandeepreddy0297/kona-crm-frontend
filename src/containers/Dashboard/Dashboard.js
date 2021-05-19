@@ -4,6 +4,7 @@ import {getallLeads} from "../../actions/leadsAction"
 import { useDispatch,useSelector } from "react-redux";
 
 
+
 function Dashboard(props) {
 const dispatch = useDispatch()
   const islogin = useSelector(state => state.isUserLogin)
@@ -48,6 +49,7 @@ const dispatch = useDispatch()
           <div className="col-sm-5">
             <div className="border border-success" style={{ height: '300px' }}>
               <h1>Leads by Courses</h1>
+              
             </div>
           </div>
           <div className="col-sm-5">

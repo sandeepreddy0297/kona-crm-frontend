@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 //import Lead from '../containers/Leads/Lead';
 import changePassword from '../containers/chnagepassword/changePassword';
 import EditLead from '../containers/Leads/EditLead';
+import Notes from '../containers/Leads/Notes';
 
 const Dashboard = React.lazy(() => import('../containers/Dashboard/Dashboard'))
 const AllLeads = React.lazy(() => import('../containers/Leads/AllLeads'))
@@ -52,6 +53,9 @@ function App() {
                 <Route path="/lead/:id" component={Lead} />
                 <Route path="/changepassword" component={changePassword} />
                 <Route path="/editlead/:id" component={EditLead} />
+
+
+                
               </Switch>
             </React.Suspense>
           </div>
